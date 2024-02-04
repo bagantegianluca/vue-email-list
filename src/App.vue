@@ -1,5 +1,29 @@
-<script></script>
+<script>
+export default {
+  name: "App",
+  data() {
+    return {
+      mailList: [],
+    };
+  },
+  mounted() {
+    for (let i = 0; i < 10; i++) {
+      axios
+        .get("https://flynn.boolean.careers/exercises/api/random/mail")
+        .then((response) => {
+          // success
+          console.log(response);
+          this.mailList.push(response.data.response);
+        });
+    }
+  },
+};
+</script>
 
-<template>Hello</template>
+<template>
+  <ul>
+    <li v-for="mail in mailList">{{ mail }}</li>
+  </ul>
+</template>
 
 <style scoped></style>
