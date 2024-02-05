@@ -11,7 +11,6 @@ export default {
       axios
         .get("https://flynn.boolean.careers/exercises/api/random/mail")
         .then((response) => {
-          // success
           console.log(response);
           this.mailList.push(response.data.response);
         });
